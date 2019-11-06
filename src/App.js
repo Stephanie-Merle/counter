@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import "./reset.css";
+import Counter from "./components/counter";
 
-function App() {
+const App = () => {
+  const [count, setCount] = useState(0);
+  const [display, setDisplay] = useState(false);
+
+  const increment = () => {
+    if (count < 18) {
+      setCount(count + 1);
+      setDisplay(false);
+    }
+    if (count === 17) {
+      setDisplay(true);
+    }
+  };
+  const decrement = () => {
+    if (count > 0) {
+      setCount(count - 1);
+    }
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <Counter add={increment} deduce={decrement} show={display} />
+      <Counter add={increment} deduce={decrement} show={display} />
+      <Counter add={increment} deduce={decrement} show={display} />
+      <div className="sum"> {count}</div>
     </div>
   );
-}
+};
 
 export default App;

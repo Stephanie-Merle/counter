@@ -1,22 +1,38 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.counter {
+  background-color: rgb(238, 236, 235);
+  width: 30%;
+  margin: 2em;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 2em;
 }
-
-.App-link {
-  color: #09d3ac;
+.title {
+  width: 100%;
+  justify-content: center;
+  font-size: 3rem;
+}
+.counter div {
+  display: inline-flex;
+  margin: auto;
+}
+.btn {
+  margin: auto;
+}
+.btn button {
+  background-color: rgb(104, 255, 44);
+  font-size: 2rem;
+}
+.container .btn:last-child button {
+  background-color: rgb(251, 62, 15);
+}
+.control {
+  padding-top: 2em;
+  justify-content: space-around;
+  width: 100%;
+}
+.sum {
+  background-color: rgb(238, 236, 235);
+  width: 30%;
+  margin: 1em;
+  font-size: 2rem;
+  padding: 1em;
 }
