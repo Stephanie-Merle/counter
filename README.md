@@ -3,7 +3,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 # Project Description
 
 small test of 3 independents counters going up to 10, sum of counters going up to 18. 
-Build first with useState than main counter rewritten with useReducer.
+ First built with useState then rewritten with useReducer.
 
 ## Author
 
