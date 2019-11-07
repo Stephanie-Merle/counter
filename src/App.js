@@ -1,32 +1,50 @@
-import React, { useState } from "react";
+import React, { useReducer } from "react";
 import "./App.css";
 import "./reset.css";
 import Counter from "./components/counter";
 
 const App = () => {
-  const [count, setCount] = useState(0);
-  const [display, setDisplay] = useState(false);
+  const [state, dispatch] = useReducer(reducer, { count: 0, display: false });
 
-  const increment = () => {
-    if (count < 18) {
-      setCount(count + 1);
-      setDisplay(false);
+  function reducer(state, action) {
+    switch (action.type) {
+      case "increment":
+        if (state.count === 17) {
+          return { count: state.count + 1, display: true };
+        } else if (state.count < 18) {
+          return { count: state.count + 1, display: false };
+        } else {
+          return { count: state.count, display: true };
+        }
+      case "decrement":
+        if (state.count > 0 && state.count < 19) {
+          return { count: state.count - 1, display: false };
+        } else {
+          return { count: state.count, display: false };
+        }
+      default:
+        throw new Error();
     }
-    if (count === 17) {
-      setDisplay(true);
-    }
-  };
-  const decrement = () => {
-    if (count > 0) {
-      setCount(count - 1);
-    }
-  };
+  }
+
   return (
     <div className="container">
-      <Counter add={increment} deduce={decrement} show={display} />
-      <Counter add={increment} deduce={decrement} show={display} />
-      <Counter add={increment} deduce={decrement} show={display} />
-      <div className="sum"> {count}</div>
+      <Counter
+        add={() => dispatch({ type: "increment" })}
+        deduce={() => dispatch({ type: "decrement" })}
+        show={state.display}
+      />
+      <Counter
+        add={() => dispatch({ type: "increment" })}
+        deduce={() => dispatch({ type: "decrement" })}
+        show={state.display}
+      />
+      <Counter
+        add={() => dispatch({ type: "increment" })}
+        deduce={() => dispatch({ type: "decrement" })}
+        show={state.display}
+      />
+      <div className="sum"> {state.count}</div>
     </div>
   );
 };
